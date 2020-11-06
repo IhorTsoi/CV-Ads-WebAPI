@@ -32,6 +32,13 @@ namespace CV_Ads_WebAPI
 
             app.UseRouting();
 
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+            });
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
