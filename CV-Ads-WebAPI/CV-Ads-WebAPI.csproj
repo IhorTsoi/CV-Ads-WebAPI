@@ -1,12 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>CV_Ads_WebAPI</RootNamespace>
+    <UserSecretsId>c6849b9e-21a6-48de-acb9-89a671b180df</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201106111531_f.cs" />
+    <Compile Remove="Migrations\20201106111531_f.Designer.cs" />
+    <Compile Remove="Migrations\20201106112440_f.cs" />
+    <Compile Remove="Migrations\20201106112440_f.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AutoMapper\Profiles\" />
+    <Folder Include="Contracts\DTOs\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Domain\Options\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 
