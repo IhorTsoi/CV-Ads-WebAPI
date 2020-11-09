@@ -79,6 +79,7 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("Login failed. The user is not a smart device.", "Помилка! Користувач не є розумним пристроєм.");
             dictionary.Add("The user with such id was not found.", "Користувача з таким ID немає в системі.");
             dictionary.Add("The user with such id is not a smart device.", "Користувача з таким ID не є розумним пристроєм.");
+            dictionary.Add("The uploaded file is not valid.", "Файл не є валідним.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -99,6 +100,7 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("Login failed. The user is not a smart device.", "Login failed. The user is not a smart device.");
             dictionary.Add("The user with such id was not found.", "The user with such id was not found.");
             dictionary.Add("The user with such id is not a smart device.", "The user with such id is not a smart device.");
+            dictionary.Add("The uploaded file is not valid.", "The uploaded file is not valid.");
         }
 
         public LocalizedString this[string name]

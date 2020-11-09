@@ -34,5 +34,12 @@
             public const string Login = Base + "/login";
             public const string Reset = Base + "/reset/{smartDeviceId}";
         }
+
+        public static class FaceDetection
+        {
+            private const string Base = "facedetection";
+
+            public const string DetectFacesOnPhoto = Base;
+        }
     }
 }
