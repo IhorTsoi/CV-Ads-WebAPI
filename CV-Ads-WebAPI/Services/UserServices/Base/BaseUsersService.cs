@@ -3,6 +3,7 @@ using CV_Ads_WebAPI.Data;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Domain.Models.Users.Base;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Threading.Tasks;
 
@@ -13,12 +14,15 @@ namespace CV_Ads_WebAPI.Services.UserServices.Base
         protected readonly ApplicationContext _dbContext;
         protected readonly JWTTokenService _JWTTokenService;
         private readonly PasswordService _passwordService;
+        protected IStringLocalizer _localizer;
 
-        public BaseUsersService(ApplicationContext dbContext, JWTTokenService JWTTokenService, PasswordService passwordService)
+        protected BaseUsersService(
+            ApplicationContext dbContext, JWTTokenService jWTTokenService, PasswordService passwordService, IStringLocalizer localizer)
         {
             _dbContext = dbContext;
-            _JWTTokenService = JWTTokenService;
+            _JWTTokenService = jWTTokenService;
             _passwordService = passwordService;
+            _localizer = localizer;
         }
 
         public async Task RegisterUserAsync<TUser>(TUser user)
@@ -26,7 +30,7 @@ namespace CV_Ads_WebAPI.Services.UserServices.Base
         {
             if (await IsUserRegisteredAsync(user))
             {
-                throw new Exception("The user with such login is already registered.");
+                throw new Exception(_localizer["The user with such login is already registered."]);
             }
 
             SecurePassword(user);
@@ -40,14 +44,14 @@ namespace CV_Ads_WebAPI.Services.UserServices.Base
             UserIdentity userIdentity = await GetUserIdentityByLoginAsync(loginRequest.Login);
             if (userIdentity == null)
             {
-                throw new Exception("The user with such login doesn't exist");
+                throw new Exception(_localizer["The user with such login doesn't exist"]);
             }
 
             bool isPasswordCorrect = _passwordService.VerifyHashedPassword(
                 userIdentity.Password, loginRequest.Password);
             if (!isPasswordCorrect)
             {
-                throw new Exception("The password is not correct");
+                throw new Exception(_localizer["The password is not correct"]);
             }
 
             return userIdentity;

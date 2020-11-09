@@ -2,6 +2,7 @@
 using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken;
 using CV_Ads_WebAPI.Data;
 using CV_Ads_WebAPI.Services.UserServices.Base;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,9 +17,10 @@ namespace CV_Ads_WebAPI.Services.UserServices
         (
             ApplicationContext dbContext,
             PasswordService passwordService,
-            JWTTokenService JWTTokenService
+            JWTTokenService JWTTokenService,
+            IStringLocalizer localizer
         )
-            : base(dbContext, JWTTokenService, passwordService)
+            : base(dbContext, JWTTokenService, passwordService, localizer)
         { }
 
         public async Task<JWTTokenPartnerResponse> LoginPartnerAsync(LoginRequest loginRequest)
@@ -27,7 +29,7 @@ namespace CV_Ads_WebAPI.Services.UserServices
             var partner = await _dbContext.Partners.FindAsync(identity.Id);
             if (partner == null)
             {
-                throw new Exception("Login failed. The user is not a partner.");
+                throw new Exception(_localizer["Login failed. The user is not a partner."]);
             }
 
             JwtSecurityToken JWTToken = _JWTTokenService.CreateJWTToken(identity);

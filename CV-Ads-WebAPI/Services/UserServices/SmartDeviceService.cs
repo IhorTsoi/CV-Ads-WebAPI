@@ -3,6 +3,7 @@ using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken;
 using CV_Ads_WebAPI.Data;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services.UserServices.Base;
+using Microsoft.Extensions.Localization;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
@@ -15,9 +16,10 @@ namespace CV_Ads_WebAPI.Services.UserServices
         (
             ApplicationContext dbContext,
             PasswordService passwordService,
-            JWTTokenService JWTTokenService
+            JWTTokenService JWTTokenService,
+            IStringLocalizer localizer
         )
-            : base(dbContext, JWTTokenService, passwordService)
+            : base(dbContext, JWTTokenService, passwordService, localizer)
         { }
 
         public async Task<JWTTokenResponse> LoginSmartDeviceAsync(LoginRequest loginRequest)
@@ -26,7 +28,7 @@ namespace CV_Ads_WebAPI.Services.UserServices
             var smartDevice = await _dbContext.SmartDevices.FindAsync(identity.Id);
             if (smartDevice == null)
             {
-                throw new Exception("Login failed. The user is not a smart device.");
+                throw new Exception(_localizer["Login failed. The user is not a smart device."]);
             }
 
             JwtSecurityToken JWTToken = _JWTTokenService.CreateJWTToken(identity);
@@ -40,13 +42,13 @@ namespace CV_Ads_WebAPI.Services.UserServices
             var identity = await _dbContext.UserIdentities.FindAsync(id);
             if (identity == null)
             {
-                throw new Exception("The user with such id was not found.");
+                throw new Exception(_localizer["The user with such id was not found."]);
             }
 
             var smartDevice = await _dbContext.SmartDevices.FindAsync(identity.Id);
             if (smartDevice == null)
             {
-                throw new Exception("The user with such id is not a smart device.");
+                throw new Exception(_localizer["The user with such id is not a smart device."]);
             }
 
             string login = identity.Login;

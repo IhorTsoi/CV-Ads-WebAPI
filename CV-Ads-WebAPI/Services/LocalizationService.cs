@@ -70,6 +70,15 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The serial number field must not be empty.", "Серійний номер є обов'язковим для заповнення.");
             dictionary.Add("The login field must not be empty.", "Логін є обов'язковим для заповнення.");
             dictionary.Add("The new password field must not be empty.", "Новий пароль є обов'язковим для заповнення.");
+            dictionary.Add("The user with such login is already registered.", "Користувач з таким логіном вже зареєстрований у системі.");
+            dictionary.Add("The user with such login doesn't exist", "Користувач з таким логіном не зареєстрований у системі.");
+            dictionary.Add("The password is not correct", "Не правильний пароль.");
+            dictionary.Add("Login failed. The user is not an admin.", "Помилка! Користувач не є адміністратором.");
+            dictionary.Add("Login failed. The user is not a customer.", "Помилка! Користувач не є рекламодавцем.");
+            dictionary.Add("Login failed. The user is not a partner.", "Помилка! Користувач не є партнером.");
+            dictionary.Add("Login failed. The user is not a smart device.", "Помилка! Користувач не є розумним пристроєм.");
+            dictionary.Add("The user with such id was not found.", "Користувача з таким ID немає в системі.");
+            dictionary.Add("The user with such id is not a smart device.", "Користувача з таким ID не є розумним пристроєм.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -81,6 +90,15 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The serial number field must not be empty.", "The serial number field must not be empty.");
             dictionary.Add("The login field must not be empty.", "The login field must not be empty.");
             dictionary.Add("The new password field must not be empty.", "The new password field must not be empty.");
+            dictionary.Add("The user with such login is already registered.", "The user with such login is already registered.");
+            dictionary.Add("The user with such login doesn't exist", "The user with such login doesn't exist");
+            dictionary.Add("The password is not correct", "The password is not correct");
+            dictionary.Add("Login failed. The user is not an admin.", "Login failed. The user is not an admin.");
+            dictionary.Add("Login failed. The user is not a customer.", "Login failed. The user is not a customer.");
+            dictionary.Add("Login failed. The user is not a partner.", "Login failed. The user is not a partner.");
+            dictionary.Add("Login failed. The user is not a smart device.", "Login failed. The user is not a smart device.");
+            dictionary.Add("The user with such id was not found.", "The user with such id was not found.");
+            dictionary.Add("The user with such id is not a smart device.", "The user with such id is not a smart device.");
         }
 
         public LocalizedString this[string name]
