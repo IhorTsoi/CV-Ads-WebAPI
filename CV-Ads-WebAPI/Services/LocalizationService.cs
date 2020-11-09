@@ -68,6 +68,7 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The first name field must not be empty.", "Ім'я є обов'язковим для заповнення.");
             dictionary.Add("The last name field must not be empty.", "Прізвище є обов'язковим для заповнення.");
             dictionary.Add("The serial number field must not be empty.", "Серійний номер є обов'язковим для заповнення.");
+            dictionary.Add("The login field must not be empty.", "Логін є обов'язковим для заповнення.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -77,6 +78,7 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The first name field must not be empty.", "The first name field must not be empty.");
             dictionary.Add("The last name field must not be empty.", "The last name field must not be empty.");
             dictionary.Add("The serial number field must not be empty.", "The serial number field must not be empty.");
+            dictionary.Add("The login field must not be empty.", "The login field must not be empty.");
         }
 
         public LocalizedString this[string name]
