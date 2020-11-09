@@ -4,14 +4,16 @@ using CV_Ads_WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CV_Ads_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20201108184617_seedAdmin")]
+    partial class seedAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,14 +37,6 @@ namespace CV_Ads_WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Admins");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("1ec7309f-c97d-412c-b8b8-31c1459cbd41"),
-                            FirstName = "Ihor",
-                            LastName = "Tsoi"
-                        });
                 });
 
             modelBuilder.Entity("CV_Ads_WebAPI.Domain.Models.Advertisement", b =>

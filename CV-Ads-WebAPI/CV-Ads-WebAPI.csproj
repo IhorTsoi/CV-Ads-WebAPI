@@ -11,19 +11,17 @@
     <Compile Remove="Migrations\20201106111531_f.Designer.cs" />
     <Compile Remove="Migrations\20201106112440_f.cs" />
     <Compile Remove="Migrations\20201106112440_f.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AutoMapper\Profiles\" />
-    <Folder Include="Contracts\DTOs\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Domain\Options\" />
-    <Folder Include="Services\" />
+    <Compile Remove="Migrations\20201108183606_seed.cs" />
+    <Compile Remove="Migrations\20201108183606_seed.Designer.cs" />
+    <Compile Remove="Migrations\20201108184154_seedAdminIdentity.cs" />
+    <Compile Remove="Migrations\20201108184154_seedAdminIdentity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
     
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
     
@@ -32,6 +30,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AutoMapper\Profiles\" />
   </ItemGroup>
 
 

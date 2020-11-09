@@ -1,15 +1,14 @@
-﻿using FluentValidation.AspNetCore;
+﻿using CV_Ads_WebAPI.Domain.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CV_Ads_WebAPI.ServiceInstallation.Installers
 {
-    public class ControllersInstaller : IInstaller
+    public class OptionsInstaller : IInstaller
     {
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers()
-                .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssembly(typeof(Startup).Assembly)); ;
+            services.Configure<JWTOptions>(configuration.GetSection(JWTOptions.SectionName));
         }
     }
 }
