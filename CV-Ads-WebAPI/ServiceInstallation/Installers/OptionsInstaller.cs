@@ -10,6 +10,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
         {
             services.Configure<JWTOptions>(configuration.GetSection(JWTOptions.SectionName));
             services.Configure<CultureOptions>(configuration.GetSection(CultureOptions.SectionName));
+            services.Configure<FaceDetectionOptions>(configuration.GetSection(FaceDetectionOptions.SectionName));
         }
     }
 }
