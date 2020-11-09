@@ -2,10 +2,6 @@
 using CV_Ads_WebAPI.Services.UserServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.ServiceInstallation.Installers
 {
