@@ -9,6 +9,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JWTOptions>(configuration.GetSection(JWTOptions.SectionName));
+            services.Configure<CultureOptions>(configuration.GetSection(CultureOptions.SectionName));
         }
     }
 }
