@@ -1,9 +1,5 @@
 ﻿using CV_Ads_WebAPI.Contracts.DTOs.Request.Registration;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.Registration
 {
