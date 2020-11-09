@@ -1,12 +1,14 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Localization;
 
 namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators
 {
     public class SmartDeviceResetRequestValidator : AbstractValidator<SmartDeviceReserRequest>
     {
-        public SmartDeviceResetRequestValidator()
+        public SmartDeviceResetRequestValidator(IStringLocalizer localizer)
         {
-            RuleFor(request => request.NewPassword).NotEmpty().WithMessage("The new password field must not be empty.");
+            RuleFor(request => request.NewPassword).NotEmpty()
+                .WithMessage(localizer["The new password field must not be empty."]);
         }
     }
 }
