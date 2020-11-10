@@ -15,6 +15,7 @@ namespace CV_Ads_WebAPI.Data
         public DbSet<Partner> Partners { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<SmartDevice> SmartDevices { get; set; }
+        public DbSet<Advertisement> Advertisements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
