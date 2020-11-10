@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CV_Ads_WebAPI.Domain.Constants;
+using System;
 using System.Collections.Generic;
 
 namespace CV_Ads_WebAPI.Domain.Models
@@ -9,6 +10,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         { }
 
         public Guid Id { get; set; }
+        public AdvertisementStatus Status { get; set; }
         public string Name { get; set; }
         public string PictureExtension { get; set; }
         public long ViewsCount { get; set; }
