@@ -4,13 +4,6 @@ using System.Collections.Generic;
 
 namespace CV_Ads_WebAPI.Domain.Models
 {
-    public enum SmartDeviceMode
-    {
-        Inactive,
-        Active,
-        Blocked
-    }
-
     public class SmartDevice : BaseUser
     {
         private SmartDevice()
