@@ -99,6 +99,11 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The advertisement with such id does not belong to current customer.", "Рекламне оголошення з таким ID не належить поточному користувачу.");
             dictionary.Add("New advertisement status is required.", "Поле 'новий статус для рекламного оголошення' є обов'язковим.");
             dictionary.Add("New advertisement status is incorrect.", "Таке значення поля 'новий статус для рекламного оголошення' не підтримується.");
+            dictionary.Add("The age is required.", "Вік є обов'язковим для заповнення.");
+            dictionary.Add("Faces is required", "Параметр 'Обличчя' є обов'язковим.");
+            dictionary.Add("Country is required.", "Параметр 'Країна' є обов'язковим.");
+            dictionary.Add("City is required.", "Параметр 'Місто' є обов'язковим.");
+            dictionary.Add("Timezone offset is required.", "Параметр 'Зміщення часового поясу' є обов'язковим.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -139,6 +144,11 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The advertisement with such id does not belong to current customer.", "The advertisement with such id does not belong to current customer.");
             dictionary.Add("New advertisement status is required.", "New advertisement status is required.");
             dictionary.Add("New advertisement status is incorrect.", "New advertisement status is incorrect.");
+            dictionary.Add("The age is required.", "The age is required.");
+            dictionary.Add("Faces is required", "Faces is required");
+            dictionary.Add("Country is required.", "Country is required.");
+            dictionary.Add("City is required.", "City is required.");
+            dictionary.Add("Timezone offset is required.", "Timezone offset is required.");
         }
 
         public LocalizedString this[string name]
