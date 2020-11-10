@@ -1,0 +1,49 @@
+﻿using AutoMapper;
+using CV_Ads_WebAPI.Contracts;
+using CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation;
+using CV_Ads_WebAPI.Domain;
+using CV_Ads_WebAPI.Domain.Models;
+using CV_Ads_WebAPI.Services;
+using CV_Ads_WebAPI.Services.UserServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
+namespace CV_Ads_WebAPI.Controllers
+{
+    [ApiController]
+    public class AdvertisementsController : ControllerBase
+    {
+        private readonly IMapper _mapper;
+        private readonly CustomerService _customerService;
+        private readonly AdvertisementService _advertisementService;
+
+        public AdvertisementsController(
+            IMapper mapper, CustomerService customerService, AdvertisementService advertisementService)
+        {
+            _mapper = mapper;
+            _customerService = customerService;
+            _advertisementService = advertisementService;
+        }
+
+        [HttpPost(ApiRoutes.Advertisement.CreateAdvertisement)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.CUSTOMER)]
+        public async Task<IActionResult> CreateAdvertisementAsync([FromForm] CreateAdvertisementRequest createAdvertisementRequest)
+        {
+            Guid currentUserId = Guid.Parse(User.Identity.Name);
+            Customer currentCustomer = await _customerService.GetCustomerByIdAsync(currentUserId);
+
+            Advertisement advertisement = _mapper.Map<Advertisement>(createAdvertisementRequest);
+
+            using (var uploadedImageStream = createAdvertisementRequest.FormFile.OpenReadStream())
+            {
+                await _advertisementService.CreateAdvertisementForCustomer(
+                    advertisement, uploadedImageStream, currentCustomer);
+            }
+
+            return Ok();
+        }
+    }
+}

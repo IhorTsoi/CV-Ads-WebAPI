@@ -41,5 +41,12 @@
 
             public const string DetectFacesOnPhoto = Base;
         }
+
+        public static class Advertisement
+        {
+            private const string Base = "advertisements";
+
+            public const string CreateAdvertisement = Base;
+        }
     }
 }
