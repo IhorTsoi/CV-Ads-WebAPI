@@ -6,9 +6,7 @@ using CV_Ads_WebAPI.Services.UserServices.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Services.UserServices

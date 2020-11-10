@@ -21,7 +21,7 @@ namespace CV_Ads_WebAPI.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
-            
+
             AddDefaultAppAdmin(builder);
         }
 
@@ -30,7 +30,7 @@ namespace CV_Ads_WebAPI.Data
             Guid commonGuid = Guid.Parse("1EC7309F-C97D-412C-B8B8-31C1459CBD41");
             Admin defaultAppAdmin = new Admin(
                 "qweqwe", "YVFjQHffGy3JitvNiD7sfE+NwgUesCXVH3zzpJ1HqVNUi2soi7DFh5T8PRu1dtXJ", "Ihor", "Tsoi");
-            
+
             UserIdentity userIdentity = defaultAppAdmin.UserIdentity;
             userIdentity.Id = commonGuid;
 

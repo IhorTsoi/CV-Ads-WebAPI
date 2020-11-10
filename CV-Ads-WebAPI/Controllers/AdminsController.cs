@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using CV_Ads_WebAPI.Contracts;
+﻿using CV_Ads_WebAPI.Contracts;
 using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Request.Registration;
 using CV_Ads_WebAPI.Contracts.DTOs.Response;
@@ -10,6 +8,8 @@ using CV_Ads_WebAPI.Services.UserServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
 {
@@ -39,7 +39,7 @@ namespace CV_Ads_WebAPI.Controllers
 
         [HttpPost(ApiRoutes.Admin.Register)]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.ADMIN)]
-        public async Task<IActionResult> Register([FromBody]AdminRegisterRequest adminRegisterRequest)
+        public async Task<IActionResult> Register([FromBody] AdminRegisterRequest adminRegisterRequest)
         {
             Admin admin = new Admin
             (

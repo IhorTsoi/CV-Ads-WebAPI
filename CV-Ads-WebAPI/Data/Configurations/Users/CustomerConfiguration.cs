@@ -1,7 +1,6 @@
 ﻿using CV_Ads_WebAPI.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace CV_Ads_WebAPI.Data.Configurations
 {

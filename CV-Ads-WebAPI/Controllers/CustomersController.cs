@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using CV_Ads_WebAPI.Contracts;
+﻿using CV_Ads_WebAPI.Contracts;
 using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Request.Registration;
 using CV_Ads_WebAPI.Contracts.DTOs.Response;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services.UserServices;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
 {

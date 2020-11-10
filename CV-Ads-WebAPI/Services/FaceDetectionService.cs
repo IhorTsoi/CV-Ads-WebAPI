@@ -27,10 +27,10 @@ namespace CV_Ads_WebAPI.Services
         {
             IFaceClient client = AuthorizeFaceClient();
 
-            FaceAttributeType?[] returnFaceAttributes = new FaceAttributeType?[] 
-            { 
+            FaceAttributeType?[] returnFaceAttributes = new FaceAttributeType?[]
+            {
                 FaceAttributeType.Gender,
-                FaceAttributeType.Age 
+                FaceAttributeType.Age
             };
             IList<DetectedFace> detectedFaces = await client.Face.DetectWithStreamAsync(
                 imageStream, returnFaceAttributes: returnFaceAttributes);

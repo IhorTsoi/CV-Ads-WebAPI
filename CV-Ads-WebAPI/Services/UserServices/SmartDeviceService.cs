@@ -60,7 +60,7 @@ namespace CV_Ads_WebAPI.Services.UserServices
         {
             _dbContext.Remove(smartDevice);
             await _dbContext.SaveChangesAsync();
-            
+
             _dbContext.Remove(identity);
             await _dbContext.SaveChangesAsync();
         }

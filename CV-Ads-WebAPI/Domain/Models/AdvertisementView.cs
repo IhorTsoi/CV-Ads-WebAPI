@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Domain.Models
 {
     public class AdvertisementView
     {
-        private AdvertisementView() 
+        private AdvertisementView()
         { }
 
         public AdvertisementView

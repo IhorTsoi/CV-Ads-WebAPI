@@ -1,12 +1,11 @@
 ﻿using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Models.Users.Base;
-using System;
 
 namespace CV_Ads_WebAPI.Domain.Models
 {
     public class Admin : BasePersonifiedUser
     {
-        private Admin() 
+        private Admin()
         { }
 
         public Admin(string login, string password, string firstName, string lastName)

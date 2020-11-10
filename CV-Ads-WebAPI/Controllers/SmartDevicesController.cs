@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CV_Ads_WebAPI.Contracts;
+﻿using CV_Ads_WebAPI.Contracts;
 using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Request.Registration;
 using CV_Ads_WebAPI.Contracts.DTOs.Response;
@@ -11,8 +7,9 @@ using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services.UserServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
 {
@@ -62,7 +59,7 @@ namespace CV_Ads_WebAPI.Controllers
 
         [HttpPost(ApiRoutes.SmartDevice.Reset)]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.ADMIN)]
-        public async Task<IActionResult> Reset([FromRoute] Guid smartDeviceId, [FromBody]SmartDeviceReserRequest request)
+        public async Task<IActionResult> Reset([FromRoute] Guid smartDeviceId, [FromBody] SmartDeviceReserRequest request)
         {
             try
             {

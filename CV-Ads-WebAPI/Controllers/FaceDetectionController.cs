@@ -1,16 +1,13 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using CV_Ads_WebAPI.Contracts;
+﻿using CV_Ads_WebAPI.Contracts;
 using CV_Ads_WebAPI.Contracts.DTOs.Request;
-using CV_Ads_WebAPI.Contracts.DTOs.Response;
 using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
 {

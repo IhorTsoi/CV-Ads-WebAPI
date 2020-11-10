@@ -23,7 +23,7 @@ namespace CV_Ads_WebAPI.Services
             await uploadStream.CopyToAsync(localFileStream);
         }
 
-        public string GetUrlForFile(string filename) 
+        public string GetUrlForFile(string filename)
             => $"/{ADVERTISEMENT_IMAGES_DIRECTORY}/{filename}";
     }
 }

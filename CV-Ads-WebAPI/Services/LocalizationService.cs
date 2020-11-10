@@ -14,7 +14,7 @@ namespace CV_Ads_WebAPI.Services
         {
             Dictionary<string, string> enDictionary = GetEnglishLocalizationDictionary();
             Dictionary<string, string> uaDictionary = GetUkrainianLocalizationDictionary();
-            
+
             CheckInitializationCorrectness(enDictionary, uaDictionary);
 
             _resources = new Dictionary<string, Dictionary<string, string>>
@@ -51,7 +51,7 @@ namespace CV_Ads_WebAPI.Services
 
             return dictionary;
         }
-        
+
         private Dictionary<string, string> GetEnglishLocalizationDictionary()
         {
             var dictionary = new Dictionary<string, string>();
