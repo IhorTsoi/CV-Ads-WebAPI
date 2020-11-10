@@ -80,6 +80,12 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The user with such id was not found.", "Користувача з таким ID немає в системі.");
             dictionary.Add("The user with such id is not a smart device.", "Користувача з таким ID не є розумним пристроєм.");
             dictionary.Add("The uploaded file is not valid.", "Файл не є валідним.");
+            dictionary.Add("The gender is required.", "Стать є обов'язковою для заповнення.");
+            dictionary.Add("The gender value provided is not supported.", "Стать не правильно задана.");
+            dictionary.Add("The minimum age is required.", "Мінімальний вік є обов'язковим для заповнення.");
+            dictionary.Add("The minimum age property cannot be less than 0.", "Мінімальний вік не може бути менше 0.");
+            dictionary.Add("The maximum age is required.", "Максимальний вік є обов'язковим для заповнення.");
+            dictionary.Add("The maximum age property cannot be greater than 100.", "Максимальний вік не може бути більше 100.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -101,6 +107,12 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The user with such id was not found.", "The user with such id was not found.");
             dictionary.Add("The user with such id is not a smart device.", "The user with such id is not a smart device.");
             dictionary.Add("The uploaded file is not valid.", "The uploaded file is not valid.");
+            dictionary.Add("The gender is required.", "The gender is required.");
+            dictionary.Add("The gender value provided is not supported.", "The gender value provided is not supported.");
+            dictionary.Add("The minimum age is required.", "The minimum age is required.");
+            dictionary.Add("The minimum age property cannot be less than 0.", "The minimum age property cannot be less than 0.");
+            dictionary.Add("The maximum age is required.", "The maximum age is required.");
+            dictionary.Add("The maximum age property cannot be greater than 100.", "The maximum age property cannot be greater than 100.");
         }
 
         public LocalizedString this[string name]
