@@ -8,27 +8,6 @@ namespace CV_Ads_WebAPI.Domain.Models
         private Advertisement()
         { }
 
-        public Advertisement
-        (
-            string name,
-            string pictureExtension,
-            long viewsLimit,
-            string countryScope,
-            string cityScope
-        )
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-            PictureExtension = pictureExtension;
-            ViewsCount = 0;
-            ViewsLimit = viewsLimit;
-            CountryScope = countryScope;
-            CityScope = cityScope;
-            TimePeriodLimits = new List<TimePeriodLimit>();
-            HumanLimits = new List<HumanLimit>();
-            AdvertisementViews = new List<AdvertisementView>();
-        }
-
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string PictureExtension { get; set; }
