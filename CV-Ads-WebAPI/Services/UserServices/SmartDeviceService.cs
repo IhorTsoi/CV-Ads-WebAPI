@@ -22,7 +22,7 @@ namespace CV_Ads_WebAPI.Services.UserServices
             : base(dbContext, JWTTokenService, passwordService, localizer)
         { }
 
-        public async Task<JWTTokenResponse> LoginSmartDeviceAsync(LoginRequest loginRequest)
+        public async Task<JWTTokenSmartDeviceResponse> LoginSmartDeviceAsync(LoginRequest loginRequest)
         {
             var identity = await GetUserIdentityAsync(loginRequest);
             var smartDevice = await _dbContext.SmartDevices.FindAsync(identity.Id);
@@ -34,7 +34,8 @@ namespace CV_Ads_WebAPI.Services.UserServices
             JwtSecurityToken JWTToken = _JWTTokenService.CreateJWTToken(identity);
             string encodedJwt = _JWTTokenService.EncodeJWTToken(JWTToken);
 
-            return new JWTTokenResponse(encodedJwt, JWTToken.ValidTo);
+            return new JWTTokenSmartDeviceResponse(
+                encodedJwt, JWTToken.ValidTo, smartDevice.Mode, smartDevice.IsTurnedOn, smartDevice.IsCaching);
         }
 
         public async Task ResetSmartDevice(Guid id, string newPassword)
