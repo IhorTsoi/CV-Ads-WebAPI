@@ -1,7 +1,9 @@
 ﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken;
 using CV_Ads_WebAPI.Data;
+using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services.UserServices.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,17 @@ namespace CV_Ads_WebAPI.Services.UserServices
 
             return new JWTTokenCustomerResponse(
                 encodedJwt, JWTToken.ValidTo, customer.FirstName, customer.LastName, identity.Role, customer.LastPaidDate);
+        }
+
+        public async Task<Customer> GetCustomerByIdAsync(Guid id)
+        {
+            Customer customer = await _dbContext.Customers.Include(customer => customer.Advertisements)
+                .FirstOrDefaultAsync(customer => customer.Id == id);
+            if (customer == null)
+            {
+                throw new Exception("The customer could not be found");
+            }
+            return customer;
         }
     }
 }
