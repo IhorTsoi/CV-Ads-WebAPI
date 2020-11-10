@@ -3,14 +3,13 @@ using FluentValidation;
 using FluentValidation.Validators;
 using Microsoft.Extensions.Localization;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.Registration
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.Registration
 {
-    public class PartnerRegisterRequestValidator : AbstractValidator<PartnerRegisterRequest>
+    public class AdminRegisterRequestValidator : AbstractValidator<AdminRegisterRequest>
     {
-        public PartnerRegisterRequestValidator(IStringLocalizer localizer)
+        public AdminRegisterRequestValidator(IStringLocalizer localizer)
         {
-            RuleFor(request => request.Email)
-                .NotEmpty()
+            RuleFor(request => request.Email).NotEmpty()
                 .WithMessage(localizer["The email is incorrect."])
                 .EmailAddress(EmailValidationMode.AspNetCoreCompatible)
                 .WithMessage(localizer["The email is incorrect."]);

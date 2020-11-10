@@ -1,13 +1,12 @@
-﻿using FluentValidation;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators
 {
     public class FaceDetectionRequestValidator : AbstractValidator<FaceDetectionRequest>
     {

@@ -3,11 +3,11 @@ using FluentValidation;
 using FluentValidation.Validators;
 using Microsoft.Extensions.Localization;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.Registration
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.Registration
 {
-    public class AdminRegisterRequestValidator : AbstractValidator<AdminRegisterRequest>
+    public class CustomerRegisterRequestValidator : AbstractValidator<CustomerRegisterRequest>
     {
-        public AdminRegisterRequestValidator(IStringLocalizer localizer)
+        public CustomerRegisterRequestValidator(IStringLocalizer localizer)
         {
             RuleFor(request => request.Email).NotEmpty()
                 .WithMessage(localizer["The email is incorrect."])
@@ -18,7 +18,7 @@ namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.Registration
             RuleFor(request => request.FirstName).NotEmpty()
                 .WithMessage(localizer["The first name field must not be empty."]);
             RuleFor(request => request.LastName).NotEmpty()
-                .WithMessage(localizer["The last name field must not be empty."]) ;
+                .WithMessage(localizer["The last name field must not be empty."]);
         }
     }
 }

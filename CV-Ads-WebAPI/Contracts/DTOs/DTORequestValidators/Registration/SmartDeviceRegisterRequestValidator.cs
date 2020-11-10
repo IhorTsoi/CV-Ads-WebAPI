@@ -2,7 +2,7 @@
 using FluentValidation;
 using Microsoft.Extensions.Localization;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.Registration
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.Registration
 {
     public class SmartDeviceRegisterRequestValidator : AbstractValidator<SmartDeviceRegisterRequest>
     {

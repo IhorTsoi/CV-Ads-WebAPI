@@ -5,7 +5,7 @@ using Microsoft.Extensions.Localization;
 using System.IO;
 using System.Linq;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.AdvertisementCreation
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.AdvertisementCreation
 {
     public class CreateAdvertisementRequestValidator : AbstractValidator<CreateAdvertisementRequest>
     {

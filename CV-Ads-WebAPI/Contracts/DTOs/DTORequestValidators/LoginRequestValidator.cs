@@ -1,7 +1,8 @@
-﻿using FluentValidation;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
+using FluentValidation;
 using Microsoft.Extensions.Localization;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators
 {
     public class LoginRequestValidator : AbstractValidator<LoginRequest>
     {

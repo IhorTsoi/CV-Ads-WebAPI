@@ -3,7 +3,7 @@ using CV_Ads_WebAPI.Domain.Models;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.AdvertisementCreation
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.AdvertisementCreation
 {
     public class HumanLimitRequestValidator : AbstractValidator<HumanLimitRequest>
     {
@@ -14,7 +14,7 @@ namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.AdvertisementCreat
                 .WithMessage(localizer["The gender is required."])
                 .IsInEnum()
                 .WithMessage(localizer["The gender value provided is not supported."]);
-            
+
             RuleFor(request => request.MinAge)
                 .NotNull()
                 .WithMessage(localizer["The minimum age is required."])

@@ -3,7 +3,7 @@ using CV_Ads_WebAPI.Domain.Models;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.DTOsValidators.AdvertisementCreation
+namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.AdvertisementCreation
 {
     public class TimePeriodLimitRequestValidator : AbstractValidator<TimePeriodLimitRequest>
     {
