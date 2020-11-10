@@ -8,7 +8,8 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
     {
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers()
+            services.AddControllers(options =>
+                options.ModelBindingMessageProvider.SetValueIsInvalidAccessor((_) => "INVALID_FORMAT"))
                 .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssembly(typeof(Startup).Assembly)); ;
         }
     }
