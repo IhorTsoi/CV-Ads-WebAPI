@@ -1,4 +1,5 @@
-﻿using CV_Ads_WebAPI.Domain.Constants;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
+using CV_Ads_WebAPI.Domain.Constants;
 using System;
 
 namespace CV_Ads_WebAPI.Domain.Models
@@ -25,5 +26,12 @@ namespace CV_Ads_WebAPI.Domain.Models
         public int MaxAge { get; set; }
 
         public Advertisement Advertisement { get; set; }
+
+        public bool IsMatch(FaceRequest face)
+        {
+            bool genderMatches = Gender == Gender.NotSpecified || face.Gender == Gender;
+            bool ageMatches = face.Age >= MinAge && face.Age <= MaxAge;
+            return genderMatches && ageMatches;
+        }
     }
 }
