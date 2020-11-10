@@ -13,7 +13,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public Partner(string login, string password, string firstName, string lastName)
             : base(login, password, Roles.PARTNER, firstName, lastName)
         {
-            LastWithdrawedDate = DateTime.Now;
+            LastWithdrawedDate = DateTime.UtcNow;
             SmartDevices = new List<SmartDevice>();
         }
 

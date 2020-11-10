@@ -13,7 +13,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public Customer(string login, string password, string firstName, string lastName)
             : base(login, password, Roles.CUSTOMER, firstName, lastName)
         {
-            LastPaidDate = DateTime.Now;
+            LastPaidDate = DateTime.UtcNow;
             Advertisements = new List<Advertisement>();
         }
 
