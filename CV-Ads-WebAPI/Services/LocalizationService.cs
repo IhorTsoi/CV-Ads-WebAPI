@@ -90,6 +90,11 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The 'from' field of time period cannot be less than 0.", "Поле 'від' в часовому обмеженні не може бути менше 0.");
             dictionary.Add("The 'to' field of time period is required.", "Поле 'до' в часовому обмеженні є обов'язковим.");
             dictionary.Add("The 'to' field of time period cannot be greater than 1439.", "Поле 'до' в часовому обмеженні не може бути більше 1439.");
+            dictionary.Add("The name is required.", "Ім'я є обов'язковим.");
+            dictionary.Add("The views limit is required.", "Максимальна кількість переглядів є обов'язковою.");
+            dictionary.Add("The views limit must be greater than 0.", "Максимальна кількість переглядів повинна бути більше ніж 0.");
+            dictionary.Add("The time period limits is required.", "Обмеження часу є обов'язковими.");
+            dictionary.Add("The human limits is required.", "Обмеження людського фактору є обов'язковими.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -121,6 +126,11 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The 'from' field of time period cannot be less than 0.", "The 'from' field of time period cannot be less than 0.");
             dictionary.Add("The 'to' field of time period is required.", "The 'to' field of time period is required.");
             dictionary.Add("The 'to' field of time period cannot be greater than 1439.", "The 'to' field of time period cannot be greater than 1439.");
+            dictionary.Add("The name is required.", "The name is required.");
+            dictionary.Add("The views limit is required.", "The views limit is required.");
+            dictionary.Add("The views limit must be greater than 0.", "The views limit must be greater than 0.");
+            dictionary.Add("The time period limits is required.", "The time period limits is required.");
+            dictionary.Add("The human limits is required.", "The human limits is required.");
         }
 
         public LocalizedString this[string name]
