@@ -1,4 +1,4 @@
-﻿using CV_Ads_WebAPI.Domain.Models;
+﻿using CV_Ads_WebAPI.Domain.Constants;
 
 namespace CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation
 {

@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-using ApplicationGender = CV_Ads_WebAPI.Domain.Models.Gender;
+using ApplicationGender = CV_Ads_WebAPI.Domain.Constants.Gender;
 using MicrosoftGender = Microsoft.Azure.CognitiveServices.Vision.Face.Models.Gender;
 
 namespace CV_Ads_WebAPI.Services

@@ -1,4 +1,5 @@
-﻿using CV_Ads_WebAPI.Domain.Models.Users.Base;
+﻿using CV_Ads_WebAPI.Domain.Constants;
+using CV_Ads_WebAPI.Domain.Models.Users.Base;
 using System;
 using System.Collections.Generic;
 

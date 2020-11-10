@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CV_Ads_WebAPI.Domain.Constants;
+using System;
 
 namespace CV_Ads_WebAPI.Domain.Models
 {

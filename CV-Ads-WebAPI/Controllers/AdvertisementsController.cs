@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CV_Ads_WebAPI.Contracts;
 using CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation;
-using CV_Ads_WebAPI.Domain;
+using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services;
 using CV_Ads_WebAPI.Services.UserServices;

@@ -1,4 +1,4 @@
-﻿namespace CV_Ads_WebAPI.Domain.Models
+﻿namespace CV_Ads_WebAPI.Domain.Constants
 {
     public enum Gender
     {
