@@ -15,12 +15,10 @@ namespace CV_Ads_WebAPI.Controllers
     public class FaceDetectionController : ControllerBase
     {
         private readonly FaceDetectionService _faceDetectionService;
-        private readonly IStringLocalizer _localizer;
 
-        public FaceDetectionController(FaceDetectionService faceDetectionService, IStringLocalizer localizer)
+        public FaceDetectionController(FaceDetectionService faceDetectionService)
         {
             _faceDetectionService = faceDetectionService;
-            _localizer = localizer;
         }
 
         [HttpPost(ApiRoutes.FaceDetection.DetectFacesOnPhoto)]
