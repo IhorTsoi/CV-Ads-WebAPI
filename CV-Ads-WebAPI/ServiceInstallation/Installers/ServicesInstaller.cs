@@ -1,4 +1,5 @@
 ﻿using CV_Ads_WebAPI.Services;
+using CV_Ads_WebAPI.Services.Interfaces;
 using CV_Ads_WebAPI.Services.UserServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
             services.AddTransient<JWTTokenService>();
 
             services.AddTransient<IStringLocalizer, LocalizationService>();
+            services.AddTransient<IFileStorageService, LocalFileStorageService>();
         }
     }
 }
