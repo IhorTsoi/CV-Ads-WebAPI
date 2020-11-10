@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="AutoMapper\Profiles\" />
+    <Folder Include="wwwroot\AdvertisementImages\" />
   </ItemGroup>
 
 
