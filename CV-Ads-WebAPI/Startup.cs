@@ -33,6 +33,8 @@ namespace CV_Ads_WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             SetCultureConfigurationValues(
                 cultureOptions, out string defaultCultureName, out CultureInfo[] supportedCultures);
             app.UseRequestLocalization(new RequestLocalizationOptions
