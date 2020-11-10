@@ -12,7 +12,6 @@ namespace CV_Ads_WebAPI.Domain.Models
         (
             string name,
             string pictureExtension,
-            long viewsCount,
             long viewsLimit,
             string countryScope,
             string cityScope
@@ -21,7 +20,7 @@ namespace CV_Ads_WebAPI.Domain.Models
             Id = Guid.NewGuid();
             Name = name;
             PictureExtension = pictureExtension;
-            ViewsCount = viewsCount;
+            ViewsCount = 0;
             ViewsLimit = viewsLimit;
             CountryScope = countryScope;
             CityScope = cityScope;
