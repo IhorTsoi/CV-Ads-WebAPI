@@ -4,6 +4,9 @@ namespace CV_Ads_WebAPI.Domain.Models
 {
     public class TimePeriodLimit
     {
+        public const int MIN_IN_MINUTES = 0;
+        public const int MAX_IN_MINUTES = 1439;
+
         private TimePeriodLimit()
         { }
 
