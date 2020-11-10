@@ -13,7 +13,6 @@ namespace CV_Ads_WebAPI.Domain.Models
         public AdvertisementStatus Status { get; set; }
         public string Name { get; set; }
         public string PictureExtension { get; set; }
-        public long ViewsCount { get; set; }
         public long ViewsLimit { get; set; }
         public string CountryScope { get; set; }
         public string CityScope { get; set; }
