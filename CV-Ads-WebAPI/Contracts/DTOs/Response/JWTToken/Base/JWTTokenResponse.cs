@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken
+namespace CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken.Base
 {
-    public class JWTTokenResponse
+    public abstract class JWTTokenResponse
     {
         public JWTTokenResponse(string accessToken, DateTime expiresAt)
         {

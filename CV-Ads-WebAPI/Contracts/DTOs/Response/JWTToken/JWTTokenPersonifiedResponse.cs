@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken.Base;
+using System;
 
 namespace CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken
 {
