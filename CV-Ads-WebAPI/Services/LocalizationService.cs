@@ -86,6 +86,10 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The minimum age property cannot be less than 0.", "Мінімальний вік не може бути менше 0.");
             dictionary.Add("The maximum age is required.", "Максимальний вік є обов'язковим для заповнення.");
             dictionary.Add("The maximum age property cannot be greater than 100.", "Максимальний вік не може бути більше 100.");
+            dictionary.Add("The 'from' field of time period is required.", "Поле 'від' в часовому обмеженні є обов'язковим.");
+            dictionary.Add("The 'from' field of time period cannot be less than 0.", "Поле 'від' в часовому обмеженні не може бути менше 0.");
+            dictionary.Add("The 'to' field of time period is required.", "Поле 'до' в часовому обмеженні є обов'язковим.");
+            dictionary.Add("The 'to' field of time period cannot be greater than 1439.", "Поле 'до' в часовому обмеженні не може бути більше 1439.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -113,6 +117,10 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The minimum age property cannot be less than 0.", "The minimum age property cannot be less than 0.");
             dictionary.Add("The maximum age is required.", "The maximum age is required.");
             dictionary.Add("The maximum age property cannot be greater than 100.", "The maximum age property cannot be greater than 100.");
+            dictionary.Add("The 'from' field of time period is required.", "The 'from' field of time period is required.");
+            dictionary.Add("The 'from' field of time period cannot be less than 0.", "The 'from' field of time period cannot be less than 0.");
+            dictionary.Add("The 'to' field of time period is required.", "The 'to' field of time period is required.");
+            dictionary.Add("The 'to' field of time period cannot be greater than 1439.", "The 'to' field of time period cannot be greater than 1439.");
         }
 
         public LocalizedString this[string name]
