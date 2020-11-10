@@ -1,6 +1,6 @@
 ﻿namespace CV_Ads_WebAPI.Contracts.DTOs.Request
 {
-    public class SmartDeviceReserRequest
+    public class SmartDeviceResetRequest
     {
         public string NewPassword { get; set; }
     }

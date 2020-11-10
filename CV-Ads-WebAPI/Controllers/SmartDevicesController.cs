@@ -59,7 +59,7 @@ namespace CV_Ads_WebAPI.Controllers
 
         [HttpPost(ApiRoutes.SmartDevice.Reset)]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.ADMIN)]
-        public async Task<IActionResult> Reset([FromRoute] Guid smartDeviceId, [FromBody] SmartDeviceReserRequest request)
+        public async Task<IActionResult> Reset([FromRoute] Guid smartDeviceId, [FromBody] SmartDeviceResetRequest request)
         {
             try
             {
