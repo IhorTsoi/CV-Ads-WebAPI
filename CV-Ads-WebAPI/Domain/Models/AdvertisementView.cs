@@ -7,23 +7,15 @@ namespace CV_Ads_WebAPI.Domain.Models
         private AdvertisementView()
         { }
 
-        public AdvertisementView
-        (
-            Advertisement advertisement,
-            SmartDevice smartDevice,
-            DateTime dateTime,
-            string country,
-            string city,
-            int audienceCount
-        )
+        public AdvertisementView(Guid advertisementId, Guid smartDeviceId, string country, string city, int audienceCount)
         {
             Id = Guid.NewGuid();
-            Advertisement = advertisement;
-            SmartDevice = smartDevice;
-            DateTime = dateTime;
+            AdvertisementId = advertisementId;
+            SmartDeviceId = smartDeviceId;
             Country = country;
             City = city;
             AudienceCount = audienceCount;
+            DateTime = DateTime.UtcNow;
         }
 
         public Guid Id { get; set; }
