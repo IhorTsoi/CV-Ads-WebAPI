@@ -20,5 +20,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public List<TimePeriodLimit> TimePeriodLimits { get; set; }
         public List<HumanLimit> HumanLimits { get; set; }
         public List<AdvertisementView> AdvertisementViews { get; set; }
+
+        public string GetFileName() => $"{Id}{PictureExtension}";
     }
 }
