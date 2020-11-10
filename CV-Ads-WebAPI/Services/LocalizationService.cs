@@ -95,6 +95,10 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The views limit must be greater than 0.", "Максимальна кількість переглядів повинна бути більше ніж 0.");
             dictionary.Add("The time period limits is required.", "Обмеження часу є обов'язковими.");
             dictionary.Add("The human limits is required.", "Обмеження людського фактору є обов'язковими.");
+            dictionary.Add("The advertisement with such id does not exist.", "Рекламного оголошення з таким ID не існує.");
+            dictionary.Add("The advertisement with such id does not belong to current customer.", "Рекламне оголошення з таким ID не належить поточному користувачу.");
+            dictionary.Add("New advertisement status is required.", "Поле 'новий статус для рекламного оголошення' є обов'язковим.");
+            dictionary.Add("New advertisement status is incorrect.", "Таке значення поля 'новий статус для рекламного оголошення' не підтримується.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -131,6 +135,10 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The views limit must be greater than 0.", "The views limit must be greater than 0.");
             dictionary.Add("The time period limits is required.", "The time period limits is required.");
             dictionary.Add("The human limits is required.", "The human limits is required.");
+            dictionary.Add("The advertisement with such id does not exist.", "The advertisement with such id does not exist.");
+            dictionary.Add("The advertisement with such id does not belong to current customer.", "The advertisement with such id does not belong to current customer.");
+            dictionary.Add("New advertisement status is required.", "New advertisement status is required.");
+            dictionary.Add("New advertisement status is incorrect.", "New advertisement status is incorrect.");
         }
 
         public LocalizedString this[string name]

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CV_Ads_WebAPI.Contracts;
+using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation;
+using CV_Ads_WebAPI.Contracts.DTOs.Response;
 using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services;
@@ -43,6 +45,28 @@ namespace CV_Ads_WebAPI.Controllers
                     advertisement, uploadedImageStream, currentCustomer);
             }
 
+            return Ok();
+        }
+
+        [HttpPatch(ApiRoutes.Advertisement.ChangeStatusOfAdvertisement)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.CUSTOMER)]
+        public async Task<IActionResult> ChangeStatusOfAdvertisement(
+            [FromRoute] Guid advertisementId, [FromBody] ChangeStatusOfAdvertisementRequest changeStatusOfAdvertisement)
+        {
+            Guid currentUserId = Guid.Parse(User.Identity.Name);
+            Advertisement advertisement;
+            try
+            {
+                advertisement = await _advertisementService
+                    .GetAdvertisementByIdAndCustomerId(advertisementId, currentUserId);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new BadRequestResponseMessage(e.Message));
+            }
+
+            await _advertisementService.UpdateAdvertisementStatus(
+                advertisement, (AdvertisementStatus)changeStatusOfAdvertisement.NewAdvertisementStatus);
             return Ok();
         }
     }

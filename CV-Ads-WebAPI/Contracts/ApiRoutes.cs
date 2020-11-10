@@ -47,6 +47,7 @@
             private const string Base = "advertisements";
 
             public const string CreateAdvertisement = Base;
+            public const string ChangeStatusOfAdvertisement = Base + "/{advertisementId}";
         }
     }
 }
