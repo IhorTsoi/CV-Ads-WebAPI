@@ -19,7 +19,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         }
 
         public Guid Id { get; set; }
-        
+
         public Guid? AdvertisementId { get; set; }
         public Guid? SmartDeviceId { get; set; }
 

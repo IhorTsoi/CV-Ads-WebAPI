@@ -69,5 +69,28 @@ namespace CV_Ads_WebAPI.Controllers
                 advertisement, (AdvertisementStatus)changeStatusOfAdvertisement.NewAdvertisementStatus);
             return Ok();
         }
+
+        [HttpPost(ApiRoutes.Advertisement.GetAdvertisementByEnvironment)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.SMART_DEVICE)]
+        public async Task<IActionResult> GetAdvertisementByEnvironmentAsync([FromBody] GetAdvertisementByEnvironmentRequest request)
+        {
+            int localTimeInMinutes = GetUserLocalTimeInMinutes((int)request.TimeZoneOffset);
+            Guid currentUserId = Guid.Parse(User.Identity.Name);
+
+            var response = await _advertisementService.GetAdvertisementByEnvironmentAsync(
+                localTimeInMinutes, request, currentUserId);
+
+            if (response == null)
+            {
+                return NoContent();
+            }
+            return Ok(response);
+        }
+
+        private static int GetUserLocalTimeInMinutes(int timeZoneOffset)
+        {
+            DateTime dateTime = DateTime.UtcNow.AddHours(timeZoneOffset);
+            return (dateTime.Hour * 60) + dateTime.Minute;
+        }
     }
 }

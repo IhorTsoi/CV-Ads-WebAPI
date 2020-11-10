@@ -27,7 +27,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public string GetFileName() => $"{Id}{PictureExtension}";
 
         public float CalculatePercentageOfViewsLimit()
-            => AdvertisementViews.Count / ViewsLimit;
+            => (float)AdvertisementViews.Count / ViewsLimit;
 
         public int CountTargetAudience(List<FaceRequest> faces) =>
             faces.Count(face => HumanLimits.Any(humanLimit => humanLimit.IsMatch(face)));
