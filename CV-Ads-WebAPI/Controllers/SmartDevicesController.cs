@@ -99,5 +99,21 @@ namespace CV_Ads_WebAPI.Controllers
             await _smartDeviceService.UpdateConfigurationAsync(smartDevice, updateSmartDeviceConfigurationRequest);
             return Ok();
         }
+
+        [HttpPatch(ApiRoutes.SmartDevice.Block)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.ADMIN)]
+        public async Task<IActionResult> Block([FromRoute] Guid smartDeviceId)
+        {
+            try
+            {
+                SmartDevice smartDevice = await _smartDeviceService.GetByIdAsync(smartDeviceId);
+                await _smartDeviceService.Block(smartDevice);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new BadRequestResponseMessage(e.Message));
+            }
+        }
     }
 }

@@ -106,6 +106,30 @@ namespace CV_Ads_WebAPI.Services.UserServices
             await _smartDeviceHubService.SendUpdateMessageAsync(smartDevice.Id);
         }
 
+        public async Task<SmartDevice> GetByIdAsync(Guid smartDeviceId)
+        {
+            var identity = await _dbContext.UserIdentities.FindAsync(smartDeviceId);
+            if (identity == null)
+            {
+                throw new Exception(_localizer["The user with such id was not found."]);
+            }
+
+            var smartDevice = await _dbContext.SmartDevices.FindAsync(identity.Id);
+            if (smartDevice == null)
+            {
+                throw new Exception(_localizer["The user with such id is not a smart device."]);
+            }
+            return smartDevice;
+        }
+
+        public async Task Block(SmartDevice smartDevice)
+        {
+            smartDevice.Mode = SmartDeviceMode.Blocked;
+            await _dbContext.SaveChangesAsync();
+
+            await _smartDeviceHubService.SendUpdateMessageAsync(smartDevice.Id);
+        }
+
         public async Task<SmartDevice> GetSmartDeviceByIdAndPartnerIdAsync(Guid smartDeviceId, Guid partnerId)
         {
             var identity = await _dbContext.UserIdentities.FindAsync(smartDeviceId);

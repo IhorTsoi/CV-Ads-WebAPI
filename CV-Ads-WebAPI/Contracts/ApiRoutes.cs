@@ -40,6 +40,7 @@
             public const string Reset = Base + "/{smartDeviceId}/reset";
             public const string Activate = Base + "/activate";
             public const string UpdateConfiguration = Base + "/{smartDeviceId}";
+            public const string Block = Base + "/{smartDeviceId}/block";
         }
 
         public static class FaceDetection
