@@ -59,7 +59,7 @@ namespace CV_Ads_WebAPI.Controllers
             try
             {
                 advertisement = await _advertisementService
-                    .GetAdvertisementByIdAndCustomerId(advertisementId, currentUserId);
+                    .GetAdvertisementByIdAndCustomerIdAsync(advertisementId, currentUserId);
             }
             catch (Exception e)
             {

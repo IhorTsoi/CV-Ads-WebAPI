@@ -54,7 +54,7 @@ namespace CV_Ads_WebAPI.Services
             return advertisement;
         }
 
-        public async Task<Advertisement> GetAdvertisementByIdAndCustomerId(Guid advertisementId, Guid customerId)
+        public async Task<Advertisement> GetAdvertisementByIdAndCustomerIdAsync(Guid advertisementId, Guid customerId)
         {
             Advertisement advertisement = await _dbContext.Advertisements.Include(ad => ad.Customer)
                 .FirstOrDefaultAsync(ad => ad.Id == advertisementId);
