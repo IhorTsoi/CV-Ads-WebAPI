@@ -108,6 +108,7 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The smart device cannot be activated.", "Розумний пристрій не може бути активований.");
             dictionary.Add("Caching mode must be specified.", "Режим кешування повинен бути заданий.");
             dictionary.Add("The power mode must be specified.", "Режим роботи екрану повинен бути заданий.");
+            dictionary.Add("The smart device doesn't belong to user.", "Розумний пристрій не належить поточному користувачу.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -157,6 +158,7 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("The smart device cannot be activated.", "The smart device cannot be activated.");
             dictionary.Add("Caching mode must be specified.", "Caching mode must be specified.");
             dictionary.Add("The power mode must be specified.", "The power mode must be specified.");
+            dictionary.Add("The smart device doesn't belong to user.", "The smart device doesn't belong to user.");
         }
 
         public LocalizedString this[string name]

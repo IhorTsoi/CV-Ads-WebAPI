@@ -88,5 +88,16 @@ namespace CV_Ads_WebAPI.Controllers
                 return BadRequest(new BadRequestResponseMessage(e.Message));
             }
         }
+
+        [HttpPatch(ApiRoutes.SmartDevice.UpdateConfiguration)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.PARTNER)]
+        public async Task<IActionResult> UpdateConfiguration(
+            [FromRoute] Guid smartDeviceId, [FromBody] UpdateSmartDeviceConfigurationRequest updateSmartDeviceConfigurationRequest)
+        {
+            Guid partnerId = Guid.Parse(User.Identity.Name);
+            SmartDevice smartDevice = await _smartDeviceService.GetSmartDeviceByIdAndPartnerIdAsync(smartDeviceId, partnerId);
+            await _smartDeviceService.UpdateConfigurationAsync(smartDevice, updateSmartDeviceConfigurationRequest);
+            return Ok();
+        }
     }
 }

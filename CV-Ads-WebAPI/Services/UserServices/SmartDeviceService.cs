@@ -96,6 +96,36 @@ namespace CV_Ads_WebAPI.Services.UserServices
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task UpdateConfigurationAsync(
+            SmartDevice smartDevice, UpdateSmartDeviceConfigurationRequest updateSmartDeviceConfigurationRequest)
+        {
+            smartDevice.IsCaching = (bool)updateSmartDeviceConfigurationRequest.IsCaching;
+            smartDevice.IsTurnedOn = (bool)updateSmartDeviceConfigurationRequest.IsTurnedOn;
+            await _dbContext.SaveChangesAsync();
+
+            await _smartDeviceHubService.SendUpdateMessageAsync(smartDevice.Id);
+        }
+
+        public async Task<SmartDevice> GetSmartDeviceByIdAndPartnerIdAsync(Guid smartDeviceId, Guid partnerId)
+        {
+            var identity = await _dbContext.UserIdentities.FindAsync(smartDeviceId);
+            if (identity == null)
+            {
+                throw new Exception(_localizer["The user with such id was not found."]);
+            }
+
+            var smartDevice = await _dbContext.SmartDevices.FindAsync(identity.Id);
+            if (smartDevice == null)
+            {
+                throw new Exception(_localizer["The user with such id is not a smart device."]);
+            }
+            else if (smartDevice.PartnerId != partnerId)
+            {
+                throw new Exception(_localizer["The smart device doesn't belong to user."]);
+            }
+            return smartDevice;
+        }
+
         private async Task<SmartDevice> GetSmartDeviceByLoginPassword(LoginRequest loginRequest)
         {
             var identity = await GetUserIdentityAsync(loginRequest);
