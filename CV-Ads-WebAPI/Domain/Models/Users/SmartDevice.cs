@@ -27,5 +27,12 @@ namespace CV_Ads_WebAPI.Domain.Models
 
         public Partner Partner { get; set; }
         public List<AdvertisementView> AdvertisementViews { get; set; }
+
+        public void Activate(Guid partnerId, string hashedPassword)
+        {
+            Mode = SmartDeviceMode.Active;
+            PartnerId = partnerId;
+            UserIdentity.Password = hashedPassword;
+        }
     }
 }
