@@ -13,6 +13,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
             services.Configure<FaceDetectionOptions>(configuration.GetSection(FaceDetectionOptions.SectionName));
             services.Configure<AdvertisementEnvironmentDecisionOptions>(
                 configuration.GetSection(AdvertisementEnvironmentDecisionOptions.SectionName));
+            services.Configure<FinanceOptions>(configuration.GetSection(FinanceOptions.SectionName));
         }
     }
 }
