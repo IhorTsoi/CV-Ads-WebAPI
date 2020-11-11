@@ -24,7 +24,7 @@ namespace CV_Ads_WebAPI.Services
             await user.SendAsync(UPDATE_COMAND);
         }
 
-        public async Task<bool> TrySendActivateMessage(Guid smartDeviceId, string newPassword)
+        public async Task<bool> TrySendActivateMessageAsync(Guid smartDeviceId, string newPassword)
         {
             string recipientId = smartDeviceId.ToString();
             if (SmartDeviceHub.IsSmartDeviceConnected(recipientId))
