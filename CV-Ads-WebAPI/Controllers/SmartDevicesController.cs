@@ -5,6 +5,7 @@ using CV_Ads_WebAPI.Contracts.DTOs.Request.Registration;
 using CV_Ads_WebAPI.Contracts.DTOs.Response;
 using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Models;
+using CV_Ads_WebAPI.Services;
 using CV_Ads_WebAPI.Services.UserServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -19,11 +20,14 @@ namespace CV_Ads_WebAPI.Controllers
     public class SmartDevicesController : ControllerBase
     {
         private readonly SmartDeviceService _smartDeviceService;
+        private readonly AdvertisementViewService _advertisementViewService;
         private readonly IMapper _mapper;
 
-        public SmartDevicesController(SmartDeviceService smartDeviceService, IMapper mapper)
+        public SmartDevicesController(
+            SmartDeviceService smartDeviceService, AdvertisementViewService advertisementViewService, IMapper mapper)
         {
             _smartDeviceService = smartDeviceService;
+            _advertisementViewService = advertisementViewService;
             _mapper = mapper;
         }
 
@@ -42,6 +46,32 @@ namespace CV_Ads_WebAPI.Controllers
             List<SmartDevice> partnerSmartDevices = await _smartDeviceService.GetAllByPartnerIdAsync(partnerId);
             var partnerSmartDevicesDTOs = _mapper.Map<List<SmartDevicePartnerResponse>>(partnerSmartDevices);
             return Ok(partnerSmartDevicesDTOs);
+        }
+
+        [HttpGet(ApiRoutes.SmartDevice.GetViews)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.ADMIN + "," + Roles.PARTNER)]
+        public async Task<IActionResult> GetViews([FromRoute] Guid smartDeviceId)
+        {
+            SmartDevice smartDevice;
+            try
+            {
+                if (User.IsInRole(Roles.ADMIN))
+                {
+                    smartDevice = await _smartDeviceService.GetByIdAsync(smartDeviceId);
+                }
+                else
+                {
+                    Guid partnerId = Guid.Parse(User.Identity.Name);
+                    smartDevice = await _smartDeviceService.GetSmartDeviceByIdAndPartnerIdAsync(smartDeviceId, partnerId);
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new BadRequestResponseMessage(e.Message));
+            }
+            var adViews = await _advertisementViewService.GetAdvertisementViewsBySmartDevice(smartDevice);
+            var adViewsDTOs = _mapper.Map<List<AdvertisementViewDTO>>(adViews);
+            return Ok(adViewsDTOs);
         }
 
         [HttpPost(ApiRoutes.SmartDevice.Login)]

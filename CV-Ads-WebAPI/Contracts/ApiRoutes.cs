@@ -42,6 +42,7 @@
             public const string Activate = Base + "/activate";
             public const string UpdateConfiguration = Base + "/{smartDeviceId}";
             public const string Block = Base + "/{smartDeviceId}/block";
+            public const string GetViews = Base + "/{smartDeviceId}/views";
         }
 
         public static class FaceDetection
