@@ -26,6 +26,9 @@
 
             public const string Register = Base + "/register";
             public const string Login = Base + "/login";
+
+            public const string GetRevenueAmount = Base + "/revenue";
+            public const string WithdraRevenue = Base + "/revenue";
         }
 
         public static class SmartDevice

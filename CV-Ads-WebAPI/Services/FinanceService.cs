@@ -39,5 +39,14 @@ namespace CV_Ads_WebAPI.Services
 
             return paymentSum;
         }
+
+        public async Task<int> GetReveneuAmountForPartnerAsync(Partner partner)
+        {
+            var allAdViews = _dbContext.AdvertisementViews.Where(adView => adView.SmartDevice.Partner == partner);
+            var notWithdrawedAdViews = allAdViews.Where(adView => adView.DateTime > partner.LastWithdrawedDate);
+
+            int reveneuSum = await notWithdrawedAdViews.CountAsync() * _financeOptions.PricePerViewForPartner;
+            return reveneuSum;
+        }
     }
 }

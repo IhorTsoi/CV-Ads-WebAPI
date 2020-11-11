@@ -1,7 +1,9 @@
 ﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken;
 using CV_Ads_WebAPI.Data;
+using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services.UserServices.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -35,6 +37,16 @@ namespace CV_Ads_WebAPI.Services.UserServices
 
             return new JWTTokenPartnerResponse(
                 encodedJwt, JWTToken.ValidTo, partner.FirstName, partner.LastName, identity.Role, partner.LastWithdrawedDate);
+        }
+
+        public async Task<Partner> GetPartnerByIdAsync(Guid partnerId)
+        {
+            Partner partner = await _dbContext.Partners.FirstOrDefaultAsync(p => p.Id == partnerId);
+            if (partner == null)
+            {
+                throw new Exception("The partner could not be found");
+            }
+            return partner;
         }
     }
 }
