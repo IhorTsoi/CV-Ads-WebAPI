@@ -55,5 +55,13 @@
             public const string ChangeStatusOfAdvertisement = Base + "/{advertisementId}";
             public const string GetAdvertisementByEnvironment = Base + "byenvironment";
         }
+
+        public static class ServiceData
+        {
+            private const string Base = "servicedata";
+
+            public const string Export = Base;
+            public const string Import = Base;
+        }
     }
 }
