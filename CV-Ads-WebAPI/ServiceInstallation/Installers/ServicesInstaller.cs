@@ -22,6 +22,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
             services.AddTransient<PasswordService>();
             services.AddTransient<JWTTokenService>();
 
+            services.AddTransient<ICipherService, CaesarCipherService>();
             services.AddTransient<IStringLocalizer, LocalizationService>();
             services.AddTransient<IFileStorageService, LocalFileStorageService>();
         }
