@@ -61,8 +61,6 @@ namespace CV_Ads_WebAPI.Controllers
             }
         }
 
-
-
         [HttpGet(ApiRoutes.Partner.GetRevenueAmount)]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.PARTNER)]
         public async Task<IActionResult> GetReveneuAmount()
