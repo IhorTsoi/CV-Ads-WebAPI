@@ -1,4 +1,5 @@
 using CV_Ads_WebAPI.Domain.Options;
+using CV_Ads_WebAPI.Hubs;
 using CV_Ads_WebAPI.ServiceInstallation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -55,11 +56,13 @@ namespace CV_Ads_WebAPI
                 builder.AllowAnyMethod();
             });
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SmartDeviceHub>("/smartdevicehub");
             });
         }
 

@@ -42,7 +42,8 @@ namespace CV_Ads_WebAPI.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userIdentity.Id.ToString()),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, userIdentity.Role)
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, userIdentity.Role),
+                new Claim(ClaimTypes.NameIdentifier, userIdentity.Id.ToString())
             };
             return claims;
         }
