@@ -104,6 +104,8 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("Country is required.", "Параметр 'Країна' є обов'язковим.");
             dictionary.Add("City is required.", "Параметр 'Місто' є обов'язковим.");
             dictionary.Add("Timezone offset is required.", "Параметр 'Зміщення часового поясу' є обов'язковим.");
+            dictionary.Add("The smart device is not connected to the service.", "Розумний пристрій вимкнутий або не підключений до Інтернету.");
+            dictionary.Add("The smart device cannot be activated.", "Розумний пристрій не може бути активований.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -149,6 +151,8 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("Country is required.", "Country is required.");
             dictionary.Add("City is required.", "City is required.");
             dictionary.Add("Timezone offset is required.", "Timezone offset is required.");
+            dictionary.Add("The smart device is not connected to the service.", "The smart device is not connected to the service.");
+            dictionary.Add("The smart device cannot be activated.", "The smart device cannot be activated.");
         }
 
         public LocalizedString this[string name]

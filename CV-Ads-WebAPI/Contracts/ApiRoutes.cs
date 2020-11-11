@@ -38,6 +38,7 @@
             public const string Register = Base + "/register";
             public const string Login = Base + "/login";
             public const string Reset = Base + "/{smartDeviceId}/reset";
+            public const string Activate = Base + "/activate";
         }
 
         public static class FaceDetection

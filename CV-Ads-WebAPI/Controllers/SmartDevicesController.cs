@@ -71,5 +71,22 @@ namespace CV_Ads_WebAPI.Controllers
                 return BadRequest(new BadRequestResponseMessage(exception.Message));
             }
         }
+
+        [HttpPost(ApiRoutes.SmartDevice.Activate)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.PARTNER)]
+        public async Task<IActionResult> Activate([FromBody] ActivateSmartDeviceRequest activateSmartDeviceRequest)
+        {
+            Guid partnerId = Guid.Parse(User.Identity.Name);
+
+            try
+            {
+                await _smartDeviceService.ActivateSmartDeviceAsync(activateSmartDeviceRequest, partnerId);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new BadRequestResponseMessage(e.Message));
+            }
+        }
     }
 }
