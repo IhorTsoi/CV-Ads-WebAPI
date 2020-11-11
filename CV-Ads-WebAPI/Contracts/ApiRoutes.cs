@@ -28,7 +28,7 @@
             public const string Login = Base + "/login";
 
             public const string GetRevenueAmount = Base + "/revenue";
-            public const string WithdraRevenue = Base + "/revenue";
+            public const string WithdrawRevenue = Base + "/revenue";
         }
 
         public static class SmartDevice
