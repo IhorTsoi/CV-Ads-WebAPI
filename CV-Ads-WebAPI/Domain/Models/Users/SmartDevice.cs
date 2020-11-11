@@ -1,5 +1,6 @@
 ﻿using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Models.Users.Base;
+using System;
 using System.Collections.Generic;
 
 namespace CV_Ads_WebAPI.Domain.Models
@@ -22,6 +23,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public SmartDeviceMode Mode { get; set; }
         public bool IsTurnedOn { get; set; }
         public bool IsCaching { get; set; }
+        public Guid? PartnerId { get; set; }
 
         public Partner Partner { get; set; }
         public List<AdvertisementView> AdvertisementViews { get; set; }

@@ -24,6 +24,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public Gender Gender { get; set; }
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
+        public Guid AdvertisementId { get; set; }
 
         public Advertisement Advertisement { get; set; }
 

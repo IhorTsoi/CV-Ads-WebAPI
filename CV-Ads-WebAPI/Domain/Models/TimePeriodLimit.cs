@@ -20,6 +20,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public Guid Id { get; set; }
         public int FromInMinutes { get; set; }
         public int ToInMinutes { get; set; }
+        public Guid AdvertisementId { get; set; }
 
         public Advertisement Advertisement { get; set; }
     }

@@ -18,6 +18,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public long ViewsLimit { get; set; }
         public string CountryScope { get; set; }
         public string CityScope { get; set; }
+        public Guid CustomerId { get; set; }
 
         public Customer Customer { get; set; }
         public List<TimePeriodLimit> TimePeriodLimits { get; set; }
