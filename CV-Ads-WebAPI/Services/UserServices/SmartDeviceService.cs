@@ -1,12 +1,17 @@
-﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
+﻿using AutoMapper.QueryableExtensions;
+using CV_Ads_WebAPI.Contracts.DTOs.Request;
+using CV_Ads_WebAPI.Contracts.DTOs.Response;
 using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken;
 using CV_Ads_WebAPI.Data;
 using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Services.UserServices.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Services.UserServices
@@ -43,6 +48,18 @@ namespace CV_Ads_WebAPI.Services.UserServices
             return new JWTTokenSmartDeviceResponse(
                 encodedJwt, JWTToken.ValidTo, smartDevice.Mode, smartDevice.IsTurnedOn, smartDevice.IsCaching);
         }
+
+        public Task<List<SmartDevice>> GetAllAsync() => 
+            _dbContext.SmartDevices
+                .Include(sd => sd.UserIdentity)
+                .Include(sd => sd.Partner).ThenInclude(p => p.UserIdentity)
+                .ToListAsync();
+
+        public Task<List<SmartDevice>> GetAllByPartnerIdAsync(Guid partnerId) =>
+            _dbContext.SmartDevices
+                .Include(sd => sd.UserIdentity)
+                .Where(sd => sd.PartnerId == partnerId)
+                .ToListAsync();
 
         public async Task ResetSmartDevice(Guid id, string newPassword)
         {

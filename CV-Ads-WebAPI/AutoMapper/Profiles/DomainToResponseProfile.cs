@@ -16,6 +16,12 @@ namespace CV_Ads_WebAPI.AutoMapper.Profiles
             CreateMap<Advertisement, AdvertisementResponse>()
                 .ForMember(response => response.PictureLink, action => action.MapFrom<PictureLinkResolver>())
                 .AfterMap((ad, response) => response.ViewsCount = ad.AdvertisementViews.Count);
+
+            CreateMap<SmartDevice, SmartDevicePartnerResponse>()
+                .BeforeMap((sd, sdDTO) => sdDTO.SerialNumber = sd.UserIdentity.Login);
+            CreateMap<SmartDevice, SmartDeviceAdminResponse>()
+                .BeforeMap((sd, sdDTO) => sdDTO.SerialNumber = sd.UserIdentity.Login)
+                .BeforeMap((sd, sdDTO) => sdDTO.PartnerEmail = sd.Partner.UserIdentity.Login);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CV_Ads_WebAPI.Contracts;
+﻿using AutoMapper;
+using CV_Ads_WebAPI.Contracts;
 using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Request.Registration;
 using CV_Ads_WebAPI.Contracts.DTOs.Response;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
@@ -17,10 +19,29 @@ namespace CV_Ads_WebAPI.Controllers
     public class SmartDevicesController : ControllerBase
     {
         private readonly SmartDeviceService _smartDeviceService;
+        private readonly IMapper _mapper;
 
-        public SmartDevicesController(SmartDeviceService smartDeviceService)
+        public SmartDevicesController(SmartDeviceService smartDeviceService, IMapper mapper)
         {
             _smartDeviceService = smartDeviceService;
+            _mapper = mapper;
+        }
+
+        [HttpGet(ApiRoutes.SmartDevice.GetAll)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.ADMIN + "," + Roles.PARTNER)]
+        public async Task<IActionResult> GetAll()
+        {
+            if (User.IsInRole(Roles.ADMIN))
+            {
+                List<SmartDevice> allSmartDevices = await _smartDeviceService.GetAllAsync();
+                var allSmartDevicesDTOs = _mapper.Map<List<SmartDeviceAdminResponse>>(allSmartDevices);
+                return Ok(allSmartDevicesDTOs);
+            }
+
+            Guid partnerId = Guid.Parse(User.Identity.Name);
+            List<SmartDevice> partnerSmartDevices = await _smartDeviceService.GetAllByPartnerIdAsync(partnerId);
+            var partnerSmartDevicesDTOs = _mapper.Map<List<SmartDevicePartnerResponse>>(partnerSmartDevices);
+            return Ok(partnerSmartDevicesDTOs);
         }
 
         [HttpPost(ApiRoutes.SmartDevice.Login)]

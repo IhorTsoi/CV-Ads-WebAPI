@@ -35,6 +35,7 @@
         {
             private const string Base = "smartdevices";
 
+            public const string GetAll = Base;
             public const string Register = Base + "/register";
             public const string Login = Base + "/login";
             public const string Reset = Base + "/{smartDeviceId}/reset";
