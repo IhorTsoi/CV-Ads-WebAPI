@@ -2,9 +2,11 @@
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Domain.Options;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Services
 {
@@ -19,12 +21,22 @@ namespace CV_Ads_WebAPI.Services
             _financeOptions = options.Value;
         }
 
-        public int GetPaymentAmountForCustomer(Customer customer)
+        public async Task<int> GetPaymentAmountForCustomerAsync(Customer customer)
         {
             var allAdViews = _dbContext.AdvertisementViews.Where(adView => adView.Advertisement.Customer == customer);
             var notPaidAdViews = allAdViews.Where(adView => adView.DateTime > customer.LastPaidDate);
 
-            var paymentSum = notPaidAdViews.Count() * _financeOptions.PricePerViewForCustomer;
+            int paymentSum = await notPaidAdViews.CountAsync() * _financeOptions.PricePerViewForCustomer;
+            return paymentSum;
+        }
+
+        public async Task<int> PayAsync(Customer customer)
+        {
+            int paymentSum = await GetPaymentAmountForCustomerAsync(customer);
+
+            customer.UpdateLastPaidDate();
+            await _dbContext.SaveChangesAsync();
+
             return paymentSum;
         }
     }

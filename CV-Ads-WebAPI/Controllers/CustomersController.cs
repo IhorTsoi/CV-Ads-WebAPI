@@ -68,7 +68,18 @@ namespace CV_Ads_WebAPI.Controllers
             Guid customerId = Guid.Parse(User.Identity.Name);
             Customer customer = await _customerService.GetCustomerByIdAsync(customerId);
 
-            int paymentAmount = _financeService.GetPaymentAmountForCustomer(customer);
+            int paymentAmount = await _financeService.GetPaymentAmountForCustomerAsync(customer);
+            return Ok(paymentAmount);
+        }
+
+        [HttpPost(ApiRoutes.Customer.Pay)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.CUSTOMER)]
+        public async Task<IActionResult> Pay()
+        {
+            Guid customerId = Guid.Parse(User.Identity.Name);
+            Customer customer = await _customerService.GetCustomerByIdAsync(customerId);
+
+            int paymentAmount = await _financeService.PayAsync(customer);
             return Ok(paymentAmount);
         }
     }

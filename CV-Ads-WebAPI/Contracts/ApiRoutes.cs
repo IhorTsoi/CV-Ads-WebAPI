@@ -17,6 +17,7 @@
             public const string Register = Base + "/register";
             public const string Login = Base + "/login";
             public const string GetPaymentAmount = Base + "/payment";
+            public const string Pay = Base + "/payment";
         }
 
         public static class Partner
