@@ -20,5 +20,7 @@ namespace CV_Ads_WebAPI.Domain.Models
         public DateTime LastWithdrawedDate { get; set; }
 
         public List<SmartDevice> SmartDevices { get; set; }
+
+        public void UpdateLastWithdrawDate() => LastWithdrawedDate = DateTime.UtcNow;
     }
 }
