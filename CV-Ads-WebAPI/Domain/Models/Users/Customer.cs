@@ -19,5 +19,7 @@ namespace CV_Ads_WebAPI.Domain.Models
 
         public DateTime LastPaidDate { get; set; }
         public List<Advertisement> Advertisements { get; set; }
+
+        public void UpdateLastPaidDate() => LastPaidDate = DateTime.UtcNow;
     }
 }
