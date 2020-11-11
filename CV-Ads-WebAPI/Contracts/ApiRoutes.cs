@@ -69,5 +69,13 @@
             public const string Export = Base;
             public const string Import = Base;
         }
+
+        public static class Finance
+        {
+            private const string Base = "finance";
+
+            public const string PricePerViewForCustomer = Base + "/priceperview";
+            public const string PricePerViewForPartner = Base + "/reveneuperview";
+        }
     }
 }
