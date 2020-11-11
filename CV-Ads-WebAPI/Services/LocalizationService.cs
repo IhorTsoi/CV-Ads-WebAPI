@@ -106,6 +106,8 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("Timezone offset is required.", "Параметр 'Зміщення часового поясу' є обов'язковим.");
             dictionary.Add("The smart device is not connected to the service.", "Розумний пристрій вимкнутий або не підключений до Інтернету.");
             dictionary.Add("The smart device cannot be activated.", "Розумний пристрій не може бути активований.");
+            dictionary.Add("Caching mode must be specified.", "Режим кешування повинен бути заданий.");
+            dictionary.Add("The power mode must be specified.", "Режим роботи екрану повинен бути заданий.");
         }
 
         private void AddEnglishValidationMessages(Dictionary<string, string> dictionary)
@@ -153,6 +155,8 @@ namespace CV_Ads_WebAPI.Services
             dictionary.Add("Timezone offset is required.", "Timezone offset is required.");
             dictionary.Add("The smart device is not connected to the service.", "The smart device is not connected to the service.");
             dictionary.Add("The smart device cannot be activated.", "The smart device cannot be activated.");
+            dictionary.Add("Caching mode must be specified.", "Caching mode must be specified.");
+            dictionary.Add("The power mode must be specified.", "The power mode must be specified.");
         }
 
         public LocalizedString this[string name]
