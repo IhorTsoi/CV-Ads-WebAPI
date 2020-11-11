@@ -13,7 +13,7 @@ namespace CV_Ads_WebAPI.Services.UserServices.Base
     {
         protected readonly ApplicationContext _dbContext;
         protected readonly JWTTokenService _JWTTokenService;
-        private readonly PasswordService _passwordService;
+        protected readonly PasswordService _passwordService;
         protected IStringLocalizer _localizer;
 
         protected BaseUsersService(
