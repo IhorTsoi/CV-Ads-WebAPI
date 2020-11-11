@@ -101,7 +101,7 @@ namespace CV_Ads_WebAPI.Controllers
 
         [HttpGet(ApiRoutes.Advertisement.GetViews)]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.CUSTOMER)]
-        public async Task<IActionResult> GetViews(Guid advertisementId)
+        public async Task<IActionResult> GetViews([FromRoute] Guid advertisementId)
         {
             Guid customerId = Guid.Parse(User.Identity.Name);
             try
