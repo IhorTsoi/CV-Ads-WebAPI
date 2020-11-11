@@ -17,6 +17,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
             services.AddTransient<SmartDeviceService>();
             services.AddTransient<AdvertisementService>();
             services.AddTransient<FaceDetectionService>();
+            services.AddTransient<FinanceService>();
 
             services.AddTransient<PasswordService>();
             services.AddTransient<JWTTokenService>();
