@@ -56,7 +56,6 @@ namespace CV_Ads_WebAPI
                 builder.AllowAnyMethod();
             });
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
