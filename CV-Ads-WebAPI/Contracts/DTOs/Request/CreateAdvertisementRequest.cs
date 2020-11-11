@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.RequestResponse;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
-namespace CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation
+namespace CV_Ads_WebAPI.Contracts.DTOs.Request
 {
     public class CreateAdvertisementRequest
     {
@@ -10,8 +11,8 @@ namespace CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation
         public long? ViewsLimit { get; set; }
         public string CountryScope { get; set; }
         public string CityScope { get; set; }
-        public List<TimePeriodLimitRequest> TimePeriodLimits { get; set; }
-        public List<HumanLimitRequest> HumanLimits { get; set; }
+        public List<TimePeriodLimitDTO> TimePeriodLimits { get; set; }
+        public List<HumanLimitDTO> HumanLimits { get; set; }
 
         public IFormFile FormFile { get; set; }
     }

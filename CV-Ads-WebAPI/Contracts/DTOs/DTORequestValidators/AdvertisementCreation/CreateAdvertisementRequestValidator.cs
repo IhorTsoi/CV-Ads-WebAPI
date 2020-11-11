@@ -1,4 +1,4 @@
-﻿using CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
@@ -25,13 +25,13 @@ namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.AdvertisementCreatio
                 .NotNull()
                 .WithMessage(localizer["The time period limits is required."]);
             RuleForEach(request => request.TimePeriodLimits)
-                .SetValidator(new TimePeriodLimitRequestValidator(localizer));
+                .SetValidator(new TimePeriodLimitDTOValidator(localizer));
 
             RuleFor(request => request.HumanLimits)
                 .NotNull()
                 .WithMessage(localizer["The human limits is required."]);
             RuleForEach(request => request.HumanLimits)
-                .SetValidator(new HumanLimitRequestValidator(localizer));
+                .SetValidator(new HumanLimitDTOValidator(localizer));
 
             RuleFor(request => request.FormFile).Must(formFile =>
                 formFile != null && !IsEmpty(formFile) && HasPermittedExtension(formFile))

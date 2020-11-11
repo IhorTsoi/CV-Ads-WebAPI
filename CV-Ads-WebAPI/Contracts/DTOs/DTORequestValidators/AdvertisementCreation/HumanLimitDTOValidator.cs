@@ -1,13 +1,13 @@
-﻿using CV_Ads_WebAPI.Contracts.DTOs.Request.AdvertisementCreation;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.RequestResponse;
 using CV_Ads_WebAPI.Domain.Models;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
 
 namespace CV_Ads_WebAPI.Contracts.DTOs.DTORequestValidators.AdvertisementCreation
 {
-    public class HumanLimitRequestValidator : AbstractValidator<HumanLimitRequest>
+    public class HumanLimitDTOValidator : AbstractValidator<HumanLimitDTO>
     {
-        public HumanLimitRequestValidator(IStringLocalizer localizer)
+        public HumanLimitDTOValidator(IStringLocalizer localizer)
         {
             RuleFor(request => request.Gender)
                 .NotNull()
