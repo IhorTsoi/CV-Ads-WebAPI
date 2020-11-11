@@ -71,5 +71,16 @@ namespace CV_Ads_WebAPI.Controllers
             int reveneuAmount = await _financeService.GetReveneuAmountForPartnerAsync(partner);
             return Ok(reveneuAmount);
         }
+
+        [HttpPost(ApiRoutes.Partner.WithdrawRevenue)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.PARTNER)]
+        public async Task<IActionResult> Withdraw()
+        {
+            Guid partnerId = Guid.Parse(User.Identity.Name);
+            Partner partner = await _partnerService.GetPartnerByIdAsync(partnerId);
+
+            int reveneuAmount = await _financeService.WithdrawAsync(partner);
+            return Ok(reveneuAmount);
+        }
     }
 }

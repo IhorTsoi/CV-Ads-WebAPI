@@ -48,5 +48,15 @@ namespace CV_Ads_WebAPI.Services
             int reveneuSum = await notWithdrawedAdViews.CountAsync() * _financeOptions.PricePerViewForPartner;
             return reveneuSum;
         }
+
+        public async Task<int> WithdrawAsync(Partner partner)
+        {
+            int reveneuAmount = await GetReveneuAmountForPartnerAsync(partner);
+
+            partner.UpdateLastWithdrawDate();
+            await _dbContext.SaveChangesAsync();
+
+            return reveneuAmount;
+        }
     }
 }
