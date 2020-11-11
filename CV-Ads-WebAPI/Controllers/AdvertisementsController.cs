@@ -99,6 +99,24 @@ namespace CV_Ads_WebAPI.Controllers
             return Ok(adsDTOs);
         }
 
+        [HttpGet(ApiRoutes.Advertisement.GetViews)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.CUSTOMER)]
+        public async Task<IActionResult> GetViews(Guid advertisementId)
+        {
+            Guid customerId = Guid.Parse(User.Identity.Name);
+            try
+            {
+                Advertisement advertisement = await _advertisementService.GetAdvertisementByIdAndCustomerIdAsync(advertisementId, customerId);
+
+                var viewsDTOs = _mapper.Map<List<AdvertisementViewDTO>>(advertisement.AdvertisementViews);
+                return Ok(viewsDTOs);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new BadRequestResponseMessage(e.Message));
+            }
+        }
+
         private static int GetUserLocalTimeInMinutes(int timeZoneOffset)
         {
             DateTime dateTime = DateTime.UtcNow.AddHours(timeZoneOffset);
