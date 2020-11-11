@@ -57,6 +57,7 @@
             public const string CreateAdvertisement = Base;
             public const string ChangeStatusOfAdvertisement = Base + "/{advertisementId}";
             public const string GetAdvertisementByEnvironment = Base + "byenvironment";
+            public const string GetAllPersonalAdvertisements = Base;
         }
 
         public static class ServiceData

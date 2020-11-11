@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +37,11 @@ namespace CV_Ads_WebAPI.Services
             _localizer = localizer;
             _advertisementEnvironmentDecisionOptions = options.Value;
         }
+
+        public Task<List<Advertisement>> GetAdvertisementsByCustomerIdAsync(Guid customerId) => 
+            _dbContext.Advertisements
+                .Include(ad => ad.TimePeriodLimits).Include(ad => ad.HumanLimits).Include(ad => ad.AdvertisementViews)
+                .Where(ad => ad.CustomerId == customerId).ToListAsync();
 
         public async Task<Advertisement> CreateAdvertisementForCustomer(
             Advertisement advertisement, Stream advertisementPictureStream, Customer customer)

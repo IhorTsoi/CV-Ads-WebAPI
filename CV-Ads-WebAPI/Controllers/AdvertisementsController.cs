@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
@@ -84,6 +86,17 @@ namespace CV_Ads_WebAPI.Controllers
                 return NoContent();
             }
             return Ok(response);
+        }
+
+        [HttpGet(ApiRoutes.Advertisement.GetAllPersonalAdvertisements)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.CUSTOMER)]
+        public async Task<IActionResult> GetAllPersonalAdvertisements()
+        {
+            Guid customerId = Guid.Parse(User.Identity.Name);
+            var ads = await _advertisementService.GetAdvertisementsByCustomerIdAsync(customerId);
+
+            var adsDTOs = _mapper.Map<List<AdvertisementResponse>>(ads);
+            return Ok(adsDTOs);
         }
 
         private static int GetUserLocalTimeInMinutes(int timeZoneOffset)
