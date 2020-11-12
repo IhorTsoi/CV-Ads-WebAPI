@@ -56,7 +56,7 @@ namespace CV_Ads_WebAPI.Services
                 await _dbContext.TimePeriodLimits.AsNoTracking().ToListAsync()
             );
         }
-        
+
         private string GetOriginalServiceDataJson(byte[] importFileContent)
         {
             string serviceDataJsonEncoded = Encoding.UTF8.GetString(importFileContent);

@@ -38,7 +38,7 @@ namespace CV_Ads_WebAPI.Services
             _advertisementEnvironmentDecisionOptions = options.Value;
         }
 
-        public Task<List<Advertisement>> GetAdvertisementsByCustomerIdAsync(Guid customerId) => 
+        public Task<List<Advertisement>> GetAdvertisementsByCustomerIdAsync(Guid customerId) =>
             _dbContext.Advertisements
                 .Include(ad => ad.TimePeriodLimits).Include(ad => ad.HumanLimits).Include(ad => ad.AdvertisementViews)
                 .Where(ad => ad.CustomerId == customerId).ToListAsync();

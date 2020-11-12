@@ -1,6 +1,4 @@
-﻿using AutoMapper.QueryableExtensions;
-using CV_Ads_WebAPI.Contracts.DTOs.Request;
-using CV_Ads_WebAPI.Contracts.DTOs.Response;
+﻿using CV_Ads_WebAPI.Contracts.DTOs.Request;
 using CV_Ads_WebAPI.Contracts.DTOs.Response.JWTToken;
 using CV_Ads_WebAPI.Data;
 using CV_Ads_WebAPI.Domain.Constants;
@@ -49,7 +47,7 @@ namespace CV_Ads_WebAPI.Services.UserServices
                 encodedJwt, JWTToken.ValidTo, smartDevice.Mode, smartDevice.IsTurnedOn, smartDevice.IsCaching);
         }
 
-        public Task<List<SmartDevice>> GetAllAsync() => 
+        public Task<List<SmartDevice>> GetAllAsync() =>
             _dbContext.SmartDevices
                 .Include(sd => sd.UserIdentity)
                 .Include(sd => sd.Partner).ThenInclude(p => p.UserIdentity)
@@ -91,8 +89,8 @@ namespace CV_Ads_WebAPI.Services.UserServices
 
         public async Task ActivateSmartDeviceAsync(ActivateSmartDeviceRequest activateSmartDeviceRequest, Guid partnerId)
         {
-            LoginRequest loginRequest = new LoginRequest() 
-            { 
+            LoginRequest loginRequest = new LoginRequest()
+            {
                 Login = activateSmartDeviceRequest.SerialNumber,
                 Password = activateSmartDeviceRequest.DefaultPassword
             };

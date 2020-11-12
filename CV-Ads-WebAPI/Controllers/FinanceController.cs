@@ -1,8 +1,5 @@
 ﻿using CV_Ads_WebAPI.Contracts;
-using CV_Ads_WebAPI.Domain.Constants;
 using CV_Ads_WebAPI.Domain.Options;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 

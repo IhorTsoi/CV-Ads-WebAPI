@@ -1,10 +1,8 @@
 ﻿using CV_Ads_WebAPI.Data;
 using CV_Ads_WebAPI.Domain.Models;
 using CV_Ads_WebAPI.Domain.Options;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 

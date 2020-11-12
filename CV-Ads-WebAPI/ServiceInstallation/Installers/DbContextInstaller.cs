@@ -11,7 +11,7 @@ namespace CV_Ads_WebAPI.ServiceInstallation.Installers
         {
 #if DEBUG
             string connectionsString = configuration.GetConnectionString("LocalDatabase");
-            
+
             // next line is used for 'import service data' feature demonstration
             // string connectionsString = configuration.GetConnectionString("RecoveryDatabase");
 #else

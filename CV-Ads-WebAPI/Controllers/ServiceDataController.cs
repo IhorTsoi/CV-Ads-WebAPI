@@ -28,7 +28,7 @@ namespace CV_Ads_WebAPI.Controllers
         }
 
         [HttpPost(ApiRoutes.ServiceData.Import)]
-        public async Task<IActionResult> ImportServiceData([FromForm]ImportServiceDataRequest importServiceDataRequest)
+        public async Task<IActionResult> ImportServiceData([FromForm] ImportServiceDataRequest importServiceDataRequest)
         {
             byte[] fileContentBytes = await ReadFileContentBytes(importServiceDataRequest);
             await _serviceDataService.ImportAsync(fileContentBytes);
