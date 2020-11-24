@@ -21,7 +21,7 @@ namespace CV_Ads_WebAPI.AutoMapper.Profiles
                 .BeforeMap((sd, sdDTO) => sdDTO.SerialNumber = sd.UserIdentity.Login);
             CreateMap<SmartDevice, SmartDeviceAdminResponse>()
                 .BeforeMap((sd, sdDTO) => sdDTO.SerialNumber = sd.UserIdentity.Login)
-                .BeforeMap((sd, sdDTO) => sdDTO.PartnerEmail = sd.Partner.UserIdentity.Login);
+                .BeforeMap((sd, sdDTO) => sdDTO.PartnerEmail = sd.Partner?.UserIdentity.Login);
 
             CreateMap<AdvertisementView, AdvertisementViewDTO>();
         }
