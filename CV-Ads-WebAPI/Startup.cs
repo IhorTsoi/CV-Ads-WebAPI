@@ -45,8 +45,6 @@ namespace CV_Ads_WebAPI
                 SupportedUICultures = supportedCultures
             });
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseCors(builder =>
