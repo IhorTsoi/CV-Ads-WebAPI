@@ -14,7 +14,12 @@ using MicrosoftGender = Microsoft.Azure.CognitiveServices.Vision.Face.Models.Gen
 
 namespace CV_Ads_WebAPI.Services
 {
-    public class FaceDetectionService
+    public interface IFaceDetectionService
+    {
+        Task<IEnumerable<FaceDetectedResponse>> DetectFaces(Stream imageStream);
+    }
+
+    public class FaceDetectionService : IFaceDetectionService
     {
         private readonly FaceDetectionOptions _faceDetectionOptions;
 

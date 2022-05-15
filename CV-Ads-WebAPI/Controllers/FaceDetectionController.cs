@@ -5,7 +5,6 @@ using CV_Ads_WebAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace CV_Ads_WebAPI.Controllers
@@ -13,9 +12,9 @@ namespace CV_Ads_WebAPI.Controllers
     [ApiController]
     public class FaceDetectionController : ControllerBase
     {
-        private readonly FaceDetectionService _faceDetectionService;
+        private readonly IFaceDetectionService _faceDetectionService;
 
-        public FaceDetectionController(FaceDetectionService faceDetectionService)
+        public FaceDetectionController(IFaceDetectionService faceDetectionService)
         {
             _faceDetectionService = faceDetectionService;
         }
@@ -24,8 +23,10 @@ namespace CV_Ads_WebAPI.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.SMART_DEVICE)]
         public async Task<IActionResult> DetectFacesAsync([FromForm] FaceDetectionRequest faceDetectionRequest)
         {
-            using Stream imageFileStream = faceDetectionRequest.FormFile.OpenReadStream();
-            return Ok(await _faceDetectionService.DetectFaces(imageFileStream));
+            await using var imageFileStream = faceDetectionRequest.FormFile.OpenReadStream();
+            var faceDetectedResponses = await _faceDetectionService.DetectFaces(imageFileStream);
+
+            return Ok(faceDetectedResponses);
         }
     }
 }
