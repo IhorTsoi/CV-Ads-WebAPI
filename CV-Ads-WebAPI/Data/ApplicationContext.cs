@@ -32,7 +32,7 @@ namespace CV_Ads_WebAPI.Data
         {
             Guid commonGuid = Guid.Parse("1EC7309F-C97D-412C-B8B8-31C1459CBD41");
             Admin defaultAppAdmin = new Admin(
-                "qweqwe", "YVFjQHffGy3JitvNiD7sfE+NwgUesCXVH3zzpJ1HqVNUi2soi7DFh5T8PRu1dtXJ", "Ihor", "Tsoi");
+                "adam@nure.ua", "YVFjQHffGy3JitvNiD7sfE+NwgUesCXVH3zzpJ1HqVNUi2soi7DFh5T8PRu1dtXJ", "Default", "Admin");
 
             UserIdentity userIdentity = defaultAppAdmin.UserIdentity;
             userIdentity.Id = commonGuid;
