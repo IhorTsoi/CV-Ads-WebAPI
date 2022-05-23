@@ -8,7 +8,7 @@ namespace CV_Ads_WebAPI.Domain.Models
 {
     public class Advertisement
     {
-        private Advertisement()
+        public Advertisement()
         { }
 
         public Guid Id { get; set; }
